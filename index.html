@@ -1,0 +1,2236 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gmail Clone | Rittam Saha</title>
+    <link
+      rel="shortcut icon"
+      href="./Assets/gmail favicon.png"
+      type="image/x-icon"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body class="h-screen w-screen mx-auto overflow-x-hidden overflow-y-hidden">
+    <!-- Top most div that have all content -->
+    <div class="flex flex-row">
+      <!-- Side bar -->
+      <div class="flex flex-no-wrap w-64 bg-[#F6F8FC] h-screen">
+        <!-- side bar content placed vertically using flex -->
+        <div class="flex flex-col">
+          <!-- content inside side bar placed horizontally -->
+          <div class="flex flex-row space-x-3 space-y-3">
+            <!-- content in the side bar -->
+            <div class="p-5 rounded-full cursor-pointer hover:bg-gray-200">
+              <!-- Hamburger icon -->
+              <svg
+                class="w-6 h-6"
+                fill="#000000"
+                version="1.1"
+                id="Capa_1"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                width="100px"
+                height="100px"
+                viewBox="0 0 24.75 24.75"
+                xml:space="preserve"
+              >
+                <g>
+                  <path
+                    d="M0,3.875c0-1.104,0.896-2,2-2h20.75c1.104,0,2,0.896,2,2s-0.896,2-2,2H2C0.896,5.875,0,4.979,0,3.875z M22.75,10.375H2
+                                c-1.104,0-2,0.896-2,2c0,1.104,0.896,2,2,2h20.75c1.104,0,2-0.896,2-2C24.75,11.271,23.855,10.375,22.75,10.375z M22.75,18.875H2
+                                c-1.104,0-2,0.896-2,2s0.896,2,2,2h20.75c1.104,0,2-0.896,2-2S23.855,18.875,22.75,18.875z"
+                  />
+                </g>
+              </svg>
+            </div>
+            <!-- Gmail logo placed after Hamburger icon -->
+            <div>
+              <img src="./Assets/gmail logo.png" alt="" />
+            </div>
+          </div>
+
+          <!-- compose -->
+          <div
+            class="flex justify-center mt-3 cursor-pointer relative -left-11"
+          >
+            <div
+              class="bg-[#C2E7FF] w-36 transition-hover duration-200 ease-in-out flex h-14 justify-center items-center justify-evenly rounded-xl hover:shadow-md hover:shadow-gray-600"
+            >
+              <!-- pen svg -->
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-5 h-5"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125"
+                />
+              </svg>
+              <button>Compose</button>
+            </div>
+          </div>
+          <!-- Inbox content -->
+          <div
+            class="bg-[#D3E3FD] mt-6 w-[255px] rounded-full h-[32px] -ml-2 cursor-pointer flex items-center"
+          >
+            <div class="flex flex-row mx-5 gap-5 items-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke="currentColor"
+                class="w-5 h-5"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M2.25 13.5h3.86a2.25 2.25 0 012.012 1.244l.256.512a2.25 2.25 0 002.013 1.244h3.218a2.25 2.25 0 002.013-1.244l.256-.512a2.25 2.25 0 012.013-1.244h3.859m-19.5.338V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18v-4.162c0-.224-.034-.447-.1-.661L19.24 5.338a2.25 2.25 0 00-2.15-1.588H6.911a2.25 2.25 0 00-2.15 1.588L2.35 13.177a2.25 2.25 0 00-.1.661z"
+                />
+              </svg>
+              <span class="font-semibold text-zinc-800">Inbox</span>
+              <span class="text-zinc-800 relative -right-16 font-semibold"
+                >3500</span
+              >
+            </div>
+          </div>
+
+          <!-- Starred content -->
+          <div
+            class="transition-hover duration-100 ease-in-out hover:bg-gray-200 mt-1 w-[255px] rounded-full h-[32px] -ml-2 cursor-pointer flex items-center"
+          >
+            <div class="flex flex-row mx-5 gap-5 items-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-5 h-5"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"
+                />
+              </svg>
+              <span class="font-semibold text-zinc-800">Starred</span>
+            </div>
+          </div>
+          <!-- snoozed content -->
+          <div
+            class="transition-hover duration-100 ease-in-out hover:bg-gray-200 mt-1 w-[255px] rounded-full h-[32px] -ml-2 cursor-pointer flex items-center"
+          >
+            <div class="flex flex-row mx-5 gap-5 items-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-5 h-5"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+              <span class="font-semibold text-zinc-800">Snoozed</span>
+            </div>
+          </div>
+
+          <!-- sent content -->
+          <div
+            class="transition-hover duration-100 ease-in-out hover:bg-gray-200 mt-1 w-[255px] rounded-full h-[32px] -ml-2 cursor-pointer flex items-center"
+          >
+            <div class="flex flex-row mx-5 gap-5 items-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-5 h-5"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5"
+                />
+              </svg>
+              <span class="font-semibold text-zinc-800">Sent</span>
+            </div>
+          </div>
+
+          <!-- draft content -->
+          <div
+            class="transition-hover duration-100 ease-in-out hover:bg-gray-200 mt-1 w-[255px] rounded-full h-[32px] -ml-2 cursor-pointer flex items-center"
+          >
+            <div class="flex flex-row mx-5 gap-5 items-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-5 h-5"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"
+                />
+              </svg>
+              <span class="font-semibold text-zinc-800">Drafts</span>
+            </div>
+          </div>
+
+          <!-- more  -->
+          <div
+            class="transition-hover duration-100 ease-in-out hover:bg-gray-200 mt-1 w-[255px] rounded-full h-[32px] -ml-2 cursor-pointer flex items-center"
+          >
+            <div class="flex flex-row mx-5 gap-5 items-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-5 h-5"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+                />
+              </svg>
+              <span class="font-semibold text-zinc-800">More</span>
+            </div>
+          </div>
+          <!-- labels full content -->
+          <div class="m-6">
+            <!-- inside content -->
+            <div class="flex justify-between">
+              <span class="cursor-default select-none text-lg">Labels</span>
+              <button
+                class="w-8 h-8 transition-hover duration-200 ease-in-out flex items-center justify-center rounded-full cursor-pointer hover:bg-gray-200"
+              >
+                <!-- + svg -->
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="2"
+                  stroke="currentColor"
+                  class="w-5 h-5 opacity-70"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M12 4.5v15m7.5-7.5h-15"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- middle part -->
+      <div class="flex flex-col bg-[#FFFFFF] h-screen">
+        <!-- bg color for full navigation and full right side -->
+        <div
+          class="bg-[#F6F8FC] w-[83.9vw] h-16 flex flex-row justify-evenly relative"
+        >
+          <!-- Nav bar -->
+          <div class="flex w-full h-10 mt-2 justify-between mr-2">
+            <!-- Search bar -->
+            <div
+              class="bg-[#EAF1FB] flex rounded-full h-[50px] items-center justify-center gap-3"
+            >
+              <!-- Search icon -->
+              <div class="ml-4">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="2.5"
+                  stroke="#5F6368"
+                  class="w-6 h-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+                  />
+                </svg>
+              </div>
+              <!-- blank space for Search -->
+              <div class="bg-transparent">
+                <input
+                  type="text"
+                  name=""
+                  id=""
+                  placeholder="Search mail"
+                  class="bg-transparent w-[690px] h-[50px] text-lg focus:outline-none"
+                />
+              </div>
+              <!-- show search option -->
+              <div
+                class="mr-4 p-2 rounded-full cursor-pointer hover:bg-gray-200"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="2"
+                  stroke="#5F6368"
+                  class="w-6 h-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75"
+                  />
+                </svg>
+              </div>
+            </div>
+
+            <!-- Right side all 4 icons -->
+            <div class="flex justify-center items-center gap-3">
+              <!-- question mark -->
+              <div class="p-2 rounded-full cursor-pointer hover:bg-gray-200">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="2"
+                  stroke="#5F6368"
+                  class="w-6 h-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z"
+                  />
+                </svg>
+              </div>
+              <!-- settings -->
+              <div class="p-2 rounded-full cursor-pointer hover:bg-gray-200">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="2"
+                  stroke="#5F6368"
+                  class="w-6 h-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.78l-.894-.15c-.542-.09-.94-.56-.94-1.109v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.107-1.204l-.527-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z"
+                  />
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                  />
+                </svg>
+              </div>
+
+              <!-- four square -->
+              <div class="p-2 rounded-full cursor-pointer hover:bg-gray-200">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="2"
+                  stroke="#5F6368"
+                  class="w-6 h-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z"
+                  />
+                </svg>
+              </div>
+              <!-- Account logo -->
+              <div
+                class="w-14 h-14 p-2 hover:bg-gray-200 rounded-full cursor-pointer"
+              >
+                <img
+                  src="./Assets/Rittam Saha image1.jpg"
+                  alt=""
+                  class="rounded-full"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- right side -->
+          <div
+            class="absolute h-[91.8vh] bg-[#F6F8FC] w-[60px] right-0 top-[60px]"
+          >
+            <!-- right side all content -->
+            <div class="flex flex-col items-center gap-5">
+              <!-- calender -->
+              <div
+                class="mt-3 p-3 rounded-full cursor-pointer hover:bg-gray-200"
+              >
+                <img
+                  class="w-6"
+                  src="https://www.gstatic.com/companion/icon_assets/calendar_2020q4_2x.png"
+                  alt="calender"
+                />
+              </div>
+              <!-- keep icon -->
+              <div class="p-3 rounded-full cursor-pointer hover:bg-gray-200">
+                <img
+                  class="w-6"
+                  src="https://www.gstatic.com/companion/icon_assets/keep_2020q4v3_2x.png"
+                  alt="notes"
+                />
+              </div>
+              <!-- tasks icon -->
+              <div class="p-3 rounded-full cursor-pointer hover:bg-gray-200">
+                <img
+                  class="w-6"
+                  src="https://www.gstatic.com/companion/icon_assets/tasks_2021_2x.png"
+                  alt="tasks"
+                />
+              </div>
+              <!-- contact icon -->
+              <div class="p-3 rounded-full cursor-pointer hover:bg-gray-200">
+                <img
+                  class="w-6"
+                  src="https://www.gstatic.com/companion/icon_assets/contacts_2022_2x.png"
+                  alt="contacts"
+                />
+              </div>
+              <div class="h-[1px] bg-gray-200 w-6 mx-auto"></div>
+              <!-- plus icon -->
+              <div class="p-3 rounded-full cursor-pointer hover:bg-gray-200">
+                <img
+                  class="w-6"
+                  src="https://fonts.gstatic.com/s/i/googlematerialicons/add/v21/black-24dp/1x/gm_add_black_24dp.png"
+                  alt="get add ons"
+                />
+              </div>
+              <!-- hide side panel icon -->
+              <div
+                class="p-3 rounded-full cursor-pointer hover:bg-gray-200 relative top-60"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="w-5 h-5"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M8.25 4.5l7.5 7.5-7.5 7.5"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- all middle mail content will be placed here -->
+        <div class="flex flex-col bg-[#F6F8FC] h-[87vh] w-full">
+          <!-- middle part header -->
+          <div
+            class="flex flex-row justify-between bg-white overflow-hidden bg-green-200 w-[95.5%] h-22 relative rounded-2xl"
+          >
+            <!-- middle part header left side -->
+            <div class="flex flex-row m-5">
+              <!-- checkbox -->
+              <div
+                class="p-1 h-8 flex justify-center items-center w-6 rounded-md cursor-pointer hover:bg-gray-200"
+              >
+                <input
+                  type="checkbox"
+                  name=""
+                  id=""
+                  class="cursor-pointer h-16 w-6"
+                />
+              </div>
+              <!-- arrows -->
+              <div
+                class="p-1 h-6 w-6 flex justify-center items-center rounded-full cursor-pointer hover:bg-gray-200 relative right-1 top-1"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="2"
+                  stroke="currentColor"
+                  class="w-3 h-3"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+                  />
+                </svg>
+              </div>
+              <!-- refresh -->
+              <div
+                class="p-1 h-8 flex justify-center items-center w-8 rounded-full cursor-pointer hover:bg-gray-200 mx-3"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="2"
+                  stroke="currentColor"
+                  class="w-4 h-4"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"
+                  />
+                </svg>
+              </div>
+              <!-- triple dot -->
+              <div
+                class="p-1 h-8 flex justify-center items-center w-8 rounded-full cursor-pointer hover:bg-gray-200"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="2"
+                  stroke="currentColor"
+                  class="w-5 h-5"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M12 6.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 12.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 18.75a.75.75 0 110-1.5.75.75 0 010 1.5z"
+                  />
+                </svg>
+              </div>
+            </div>
+
+            <!-- middle part header right side -->
+            <div class="flex flex-row m-5 relative right-24">
+              <!-- no. of mails -->
+              <p class="relative right-12 text-xs text-gray-500 font-medium">
+                1-50 of 5756
+              </p>
+              <!-- for both arrows -->
+              <div class="flex gap-4 -mt-2 relative right-6">
+                <!-- left arrow -->
+                <div
+                  class="p-1 h-8 flex justify-center items-center w-8 rounded-full cursor-pointer hover:bg-gray-200"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    class="w-4 h-4 text-gray-500"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M15.75 19.5L8.25 12l7.5-7.5"
+                    />
+                  </svg>
+                </div>
+                <div
+                  class="p-1 h-8 flex justify-center items-center w-8 rounded-full cursor-pointer hover:bg-gray-200"
+                >
+                  <!-- right arrow -->
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    class="w-4 h-4"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M8.25 4.5l7.5 7.5-7.5 7.5"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <!-- keyboard and arrow -->
+              <div class="flex">
+                <div class="relative -top-2 cursor-pointer">
+                  <svg
+                    width="800px"
+                    height="800px"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-8 w-8"
+                  >
+                    <path
+                      d="M10 14H14M6 14H7M17 12H18M6 12H7M9 12H10M11.5 12H12.5M14 12H15M17 14H18M17 10H18M14 10H15M11.5 10H12.5M9 10H10M6 10H7M5 8H19C19.5523 8 20 8.44772 20 9V15C20 15.5523 19.5523 16 19 16H5C4.44772 16 4 15.5523 4 15V9C4 8.44772 4.44772 8 5 8Z"
+                      stroke="#464455"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </div>
+                <div
+                  class="p-1 h-7 w-5 relative -top-2 rounded-full hover:bg-gray-200 flex justify-center items-center cursor-pointer"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    class="w-4 h-4"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- middle part content will be placed here -->
+          <div
+            class="bg-white w-[80.05%] h-[90%] absolute top-32 flex flex-col overflow-y-scroll"
+          >
+            <!-- top part primary promotion and social -->
+            <div class="flex mt-5 ml-5 gap-5">
+              <!-- primary and blue line -->
+              <div class="flex flex-col">
+                <!-- primary -->
+                <div
+                  class="flex w-60 gap-5 text-blue-700 font-medium h-16 p-3 items-center hover:bg-gray-200 cursor-pointer"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    class="w-5 h-5"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M2.25 13.5h3.86a2.25 2.25 0 012.012 1.244l.256.512a2.25 2.25 0 002.013 1.244h3.218a2.25 2.25 0 002.013-1.244l.256-.512a2.25 2.25 0 012.013-1.244h3.859m-19.5.338V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18v-4.162c0-.224-.034-.447-.1-.661L19.24 5.338a2.25 2.25 0 00-2.15-1.588H6.911a2.25 2.25 0 00-2.15 1.588L2.35 13.177a2.25 2.25 0 00-.1.661z"
+                    />
+                  </svg>
+                  <p>Primary</p>
+                </div>
+                <!-- blue line under primary -->
+                <div class="h-1 w-60 bg-blue-700 rounded-xl"></div>
+              </div>
+
+              <!-- promotion -->
+              <div
+                class="flex w-60 gap-5 font-medium h-[68px] p-3 items-center hover:bg-gray-200 cursor-pointer"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="2"
+                  stroke="currentColor"
+                  class="w-5 h-5"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z"
+                  />
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M6 6h.008v.008H6V6z"
+                  />
+                </svg>
+                <p>Promotions</p>
+              </div>
+              <!-- social -->
+              <div
+                class="flex w-60 gap-5 font-medium h-[68px] p-3 items-center hover:bg-gray-200 cursor-pointer"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="w-6 h-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"
+                  />
+                </svg>
+                <p>Social</p>
+              </div>
+            </div>
+
+            <hr />
+            <!-- all mail content -->
+            <div class="flex flex-col bg-[#EAF1FB]">
+              <!-- single mail content -->
+              <div
+                class="flex flex-row h-10 relative items-center gap-3 cursor-pointer transition-hover duration-100 ease-in-out hover:shadow-md hover:shadow-gray-300 group"
+              >
+                <!-- checkbox -->
+                <div
+                  class="ml-3 p-1 h-8 flex justify-center items-center w-8 rounded-full cursor-pointer hover:bg-gray-200"
+                >
+                  <input type="checkbox" name="" id="" class="cursor-pointer" />
+                </div>
+                <!-- star -->
+                <div
+                  class="p-1 h-8 flex justify-center items-center w-8 rounded-full cursor-pointer hover:bg-gray-200"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    class="w-4 h-4"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"
+                    />
+                  </svg>
+                </div>
+
+                <div class="flex relative">
+                  <p class="mr-24 font-medium">PW Skills</p>
+                  <p>
+                    <span class="font-medium"
+                      >Daily Doubt Sessions Starting Today! -</span
+                    >
+                    <span class="text-gray-500"
+                      >Dear Students,We are excited to announce the commencement
+                      of our daily doub...</span
+                    >
+                    <span class="ml-4 font-medium">2:50 PM</span>
+                  </p>
+                  <!-- for hidden svg and will be visible on hover -->
+                  <div
+                    class="flex items-center gap-6 transition-hover duration-200 ease-in-out hidden absolute -right-2 -top-2 h-10 z-10 group-hover:flex group-hover:bg-[#EAF1FB]"
+                  >
+                    <!-- archive -->
+                    <div class="hover:bg-gray-200 p-2 rounded-full">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        class="w-[1.2rem] h-[1.2rem]"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M9 3.75H6.912a2.25 2.25 0 00-2.15 1.588L2.35 13.177a2.25 2.25 0 00-.1.661V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18v-4.162c0-.224-.034-.447-.1-.661L19.24 5.338a2.25 2.25 0 00-2.15-1.588H15M2.25 13.5h3.86a2.25 2.25 0 012.012 1.244l.256.512a2.25 2.25 0 002.013 1.244h3.218a2.25 2.25 0 002.013-1.244l.256-.512a2.25 2.25 0 012.013-1.244h3.859M12 3v8.25m0 0l-3-3m3 3l3-3"
+                        />
+                      </svg>
+                    </div>
+                    <!-- delete -->
+                    <div class="hover:bg-gray-200 p-2 rounded-full">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        class="w-[1.2rem] h-[1.2rem]"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
+                        />
+                      </svg>
+                    </div>
+                    <!-- mark as unread -->
+                    <div class="hover:bg-gray-200 p-2 rounded-full">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        class="w-[1.2rem] h-[1.2rem]"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
+                        />
+                      </svg>
+                    </div>
+                    <!-- snooze -->
+                    <div class="hover:bg-gray-200 p-2 rounded-full">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        class="w-[1.2rem] h-[1.2rem]"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <!-- single mail content -->
+              <div
+                class="flex flex-row h-10 relative items-center gap-3 cursor-pointer transition-hover duration-100 ease-in-out hover:shadow-md hover:shadow-gray-300 group"
+              >
+                <!-- checkbox -->
+                <div
+                  class="ml-3 p-1 h-8 flex justify-center items-center w-8 rounded-full cursor-pointer hover:bg-gray-200"
+                >
+                  <input type="checkbox" name="" id="" class="cursor-pointer" />
+                </div>
+                <!-- star -->
+                <div
+                  class="p-1 h-8 flex justify-center items-center w-8 rounded-full cursor-pointer hover:bg-gray-200"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    class="w-4 h-4"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"
+                    />
+                  </svg>
+                </div>
+
+                <div class="flex relative">
+                  <p class="mr-24 font-medium">PW Skills</p>
+                  <p>
+                    <span class="font-medium"
+                      >Daily Doubt Sessions Starting Today! -</span
+                    >
+                    <span class="text-gray-500"
+                      >Dear Students,We are excited to announce the commencement
+                      of our daily doub...</span
+                    >
+                    <span class="ml-4 font-medium">2:50 PM</span>
+                  </p>
+                  <!-- for hidden svg and will be visible on hover -->
+                  <div
+                    class="flex items-center gap-6 transition-hover duration-200 ease-in-out hidden absolute -right-2 -top-2 h-10 z-10 group-hover:flex group-hover:bg-[#EAF1FB]"
+                  >
+                    <!-- archive -->
+                    <div class="hover:bg-gray-200 p-2 rounded-full">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        class="w-[1.2rem] h-[1.2rem]"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M9 3.75H6.912a2.25 2.25 0 00-2.15 1.588L2.35 13.177a2.25 2.25 0 00-.1.661V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18v-4.162c0-.224-.034-.447-.1-.661L19.24 5.338a2.25 2.25 0 00-2.15-1.588H15M2.25 13.5h3.86a2.25 2.25 0 012.012 1.244l.256.512a2.25 2.25 0 002.013 1.244h3.218a2.25 2.25 0 002.013-1.244l.256-.512a2.25 2.25 0 012.013-1.244h3.859M12 3v8.25m0 0l-3-3m3 3l3-3"
+                        />
+                      </svg>
+                    </div>
+                    <!-- delete -->
+                    <div class="hover:bg-gray-200 p-2 rounded-full">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        class="w-[1.2rem] h-[1.2rem]"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
+                        />
+                      </svg>
+                    </div>
+                    <!-- mark as unread -->
+                    <div class="hover:bg-gray-200 p-2 rounded-full">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        class="w-[1.2rem] h-[1.2rem]"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
+                        />
+                      </svg>
+                    </div>
+                    <!-- snooze -->
+                    <div class="hover:bg-gray-200 p-2 rounded-full">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        class="w-[1.2rem] h-[1.2rem]"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <!-- single mail content -->
+              <div
+                class="flex flex-row h-10 relative items-center gap-3 cursor-pointer transition-hover duration-100 ease-in-out hover:shadow-md hover:shadow-gray-300 group"
+              >
+                <!-- checkbox -->
+                <div
+                  class="ml-3 p-1 h-8 flex justify-center items-center w-8 rounded-full cursor-pointer hover:bg-gray-200"
+                >
+                  <input type="checkbox" name="" id="" class="cursor-pointer" />
+                </div>
+                <!-- star -->
+                <div
+                  class="p-1 h-8 flex justify-center items-center w-8 rounded-full cursor-pointer hover:bg-gray-200"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    class="w-4 h-4"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"
+                    />
+                  </svg>
+                </div>
+
+                <div class="flex relative">
+                  <p class="mr-24 font-medium">PW Skills</p>
+                  <p>
+                    <span class="font-medium"
+                      >Daily Doubt Sessions Starting Today! -</span
+                    >
+                    <span class="text-gray-500"
+                      >Dear Students,We are excited to announce the commencement
+                      of our daily doub...</span
+                    >
+                    <span class="ml-4 font-medium">2:50 PM</span>
+                  </p>
+                  <!-- for hidden svg and will be visible on hover -->
+                  <div
+                    class="flex items-center gap-6 transition-hover duration-200 ease-in-out hidden absolute -right-2 -top-2 h-10 z-10 group-hover:flex group-hover:bg-[#EAF1FB]"
+                  >
+                    <!-- archive -->
+                    <div class="hover:bg-gray-200 p-2 rounded-full">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        class="w-[1.2rem] h-[1.2rem]"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M9 3.75H6.912a2.25 2.25 0 00-2.15 1.588L2.35 13.177a2.25 2.25 0 00-.1.661V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18v-4.162c0-.224-.034-.447-.1-.661L19.24 5.338a2.25 2.25 0 00-2.15-1.588H15M2.25 13.5h3.86a2.25 2.25 0 012.012 1.244l.256.512a2.25 2.25 0 002.013 1.244h3.218a2.25 2.25 0 002.013-1.244l.256-.512a2.25 2.25 0 012.013-1.244h3.859M12 3v8.25m0 0l-3-3m3 3l3-3"
+                        />
+                      </svg>
+                    </div>
+                    <!-- delete -->
+                    <div class="hover:bg-gray-200 p-2 rounded-full">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        class="w-[1.2rem] h-[1.2rem]"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
+                        />
+                      </svg>
+                    </div>
+                    <!-- mark as unread -->
+                    <div class="hover:bg-gray-200 p-2 rounded-full">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        class="w-[1.2rem] h-[1.2rem]"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
+                        />
+                      </svg>
+                    </div>
+                    <!-- snooze -->
+                    <div class="hover:bg-gray-200 p-2 rounded-full">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        class="w-[1.2rem] h-[1.2rem]"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <!-- single mail content -->
+              <div
+                class="flex flex-row h-10 relative items-center gap-3 cursor-pointer transition-hover duration-100 ease-in-out hover:shadow-md hover:shadow-gray-300 group"
+              >
+                <!-- checkbox -->
+                <div
+                  class="ml-3 p-1 h-8 flex justify-center items-center w-8 rounded-full cursor-pointer hover:bg-gray-200"
+                >
+                  <input type="checkbox" name="" id="" class="cursor-pointer" />
+                </div>
+                <!-- star -->
+                <div
+                  class="p-1 h-8 flex justify-center items-center w-8 rounded-full cursor-pointer hover:bg-gray-200"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    class="w-4 h-4"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"
+                    />
+                  </svg>
+                </div>
+
+                <div class="flex relative">
+                  <p class="mr-24 font-medium">PW Skills</p>
+                  <p>
+                    <span class="font-medium"
+                      >Daily Doubt Sessions Starting Today! -</span
+                    >
+                    <span class="text-gray-500"
+                      >Dear Students,We are excited to announce the commencement
+                      of our daily doub...</span
+                    >
+                    <span class="ml-4 font-medium">2:50 PM</span>
+                  </p>
+                  <!-- for hidden svg and will be visible on hover -->
+                  <div
+                    class="flex items-center gap-6 transition-hover duration-200 ease-in-out hidden absolute -right-2 -top-2 h-10 z-10 group-hover:flex group-hover:bg-[#EAF1FB]"
+                  >
+                    <!-- archive -->
+                    <div class="hover:bg-gray-200 p-2 rounded-full">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        class="w-[1.2rem] h-[1.2rem]"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M9 3.75H6.912a2.25 2.25 0 00-2.15 1.588L2.35 13.177a2.25 2.25 0 00-.1.661V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18v-4.162c0-.224-.034-.447-.1-.661L19.24 5.338a2.25 2.25 0 00-2.15-1.588H15M2.25 13.5h3.86a2.25 2.25 0 012.012 1.244l.256.512a2.25 2.25 0 002.013 1.244h3.218a2.25 2.25 0 002.013-1.244l.256-.512a2.25 2.25 0 012.013-1.244h3.859M12 3v8.25m0 0l-3-3m3 3l3-3"
+                        />
+                      </svg>
+                    </div>
+                    <!-- delete -->
+                    <div class="hover:bg-gray-200 p-2 rounded-full">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        class="w-[1.2rem] h-[1.2rem]"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
+                        />
+                      </svg>
+                    </div>
+                    <!-- mark as unread -->
+                    <div class="hover:bg-gray-200 p-2 rounded-full">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        class="w-[1.2rem] h-[1.2rem]"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
+                        />
+                      </svg>
+                    </div>
+                    <!-- snooze -->
+                    <div class="hover:bg-gray-200 p-2 rounded-full">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        class="w-[1.2rem] h-[1.2rem]"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <!-- single mail content -->
+              <div
+                class="flex flex-row h-10 relative items-center gap-3 cursor-pointer transition-hover duration-100 ease-in-out hover:shadow-md hover:shadow-gray-300 group"
+              >
+                <!-- checkbox -->
+                <div
+                  class="ml-3 p-1 h-8 flex justify-center items-center w-8 rounded-full cursor-pointer hover:bg-gray-200"
+                >
+                  <input type="checkbox" name="" id="" class="cursor-pointer" />
+                </div>
+                <!-- star -->
+                <div
+                  class="p-1 h-8 flex justify-center items-center w-8 rounded-full cursor-pointer hover:bg-gray-200"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    class="w-4 h-4"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"
+                    />
+                  </svg>
+                </div>
+
+                <div class="flex relative">
+                  <p class="mr-24 font-medium">PW Skills</p>
+                  <p>
+                    <span class="font-medium"
+                      >Daily Doubt Sessions Starting Today! -</span
+                    >
+                    <span class="text-gray-500"
+                      >Dear Students,We are excited to announce the commencement
+                      of our daily doub...</span
+                    >
+                    <span class="ml-4 font-medium">2:50 PM</span>
+                  </p>
+                  <!-- for hidden svg and will be visible on hover -->
+                  <div
+                    class="flex items-center gap-6 transition-hover duration-200 ease-in-out hidden absolute -right-2 -top-2 h-10 z-10 group-hover:flex group-hover:bg-[#EAF1FB]"
+                  >
+                    <!-- archive -->
+                    <div class="hover:bg-gray-200 p-2 rounded-full">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        class="w-[1.2rem] h-[1.2rem]"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M9 3.75H6.912a2.25 2.25 0 00-2.15 1.588L2.35 13.177a2.25 2.25 0 00-.1.661V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18v-4.162c0-.224-.034-.447-.1-.661L19.24 5.338a2.25 2.25 0 00-2.15-1.588H15M2.25 13.5h3.86a2.25 2.25 0 012.012 1.244l.256.512a2.25 2.25 0 002.013 1.244h3.218a2.25 2.25 0 002.013-1.244l.256-.512a2.25 2.25 0 012.013-1.244h3.859M12 3v8.25m0 0l-3-3m3 3l3-3"
+                        />
+                      </svg>
+                    </div>
+                    <!-- delete -->
+                    <div class="hover:bg-gray-200 p-2 rounded-full">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        class="w-[1.2rem] h-[1.2rem]"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
+                        />
+                      </svg>
+                    </div>
+                    <!-- mark as unread -->
+                    <div class="hover:bg-gray-200 p-2 rounded-full">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        class="w-[1.2rem] h-[1.2rem]"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
+                        />
+                      </svg>
+                    </div>
+                    <!-- snooze -->
+                    <div class="hover:bg-gray-200 p-2 rounded-full">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        class="w-[1.2rem] h-[1.2rem]"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <!-- single mail content -->
+              <div
+                class="flex flex-row h-10 relative items-center gap-3 cursor-pointer transition-hover duration-100 ease-in-out hover:shadow-md hover:shadow-gray-300 group"
+              >
+                <!-- checkbox -->
+                <div
+                  class="ml-3 p-1 h-8 flex justify-center items-center w-8 rounded-full cursor-pointer hover:bg-gray-200"
+                >
+                  <input type="checkbox" name="" id="" class="cursor-pointer" />
+                </div>
+                <!-- star -->
+                <div
+                  class="p-1 h-8 flex justify-center items-center w-8 rounded-full cursor-pointer hover:bg-gray-200"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    class="w-4 h-4"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"
+                    />
+                  </svg>
+                </div>
+
+                <div class="flex relative">
+                  <p class="mr-24 font-medium">PW Skills</p>
+                  <p>
+                    <span class="font-medium"
+                      >Daily Doubt Sessions Starting Today! -</span
+                    >
+                    <span class="text-gray-500"
+                      >Dear Students,We are excited to announce the commencement
+                      of our daily doub...</span
+                    >
+                    <span class="ml-4 font-medium">2:50 PM</span>
+                  </p>
+                  <!-- for hidden svg and will be visible on hover -->
+                  <div
+                    class="flex items-center gap-6 transition-hover duration-200 ease-in-out hidden absolute -right-2 -top-2 h-10 z-10 group-hover:flex group-hover:bg-[#EAF1FB]"
+                  >
+                    <!-- archive -->
+                    <div class="hover:bg-gray-200 p-2 rounded-full">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        class="w-[1.2rem] h-[1.2rem]"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M9 3.75H6.912a2.25 2.25 0 00-2.15 1.588L2.35 13.177a2.25 2.25 0 00-.1.661V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18v-4.162c0-.224-.034-.447-.1-.661L19.24 5.338a2.25 2.25 0 00-2.15-1.588H15M2.25 13.5h3.86a2.25 2.25 0 012.012 1.244l.256.512a2.25 2.25 0 002.013 1.244h3.218a2.25 2.25 0 002.013-1.244l.256-.512a2.25 2.25 0 012.013-1.244h3.859M12 3v8.25m0 0l-3-3m3 3l3-3"
+                        />
+                      </svg>
+                    </div>
+                    <!-- delete -->
+                    <div class="hover:bg-gray-200 p-2 rounded-full">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        class="w-[1.2rem] h-[1.2rem]"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
+                        />
+                      </svg>
+                    </div>
+                    <!-- mark as unread -->
+                    <div class="hover:bg-gray-200 p-2 rounded-full">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        class="w-[1.2rem] h-[1.2rem]"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
+                        />
+                      </svg>
+                    </div>
+                    <!-- snooze -->
+                    <div class="hover:bg-gray-200 p-2 rounded-full">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        class="w-[1.2rem] h-[1.2rem]"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <!-- single mail content -->
+              <div
+                class="flex flex-row h-10 relative items-center gap-3 cursor-pointer transition-hover duration-100 ease-in-out hover:shadow-md hover:shadow-gray-300 group"
+              >
+                <!-- checkbox -->
+                <div
+                  class="ml-3 p-1 h-8 flex justify-center items-center w-8 rounded-full cursor-pointer hover:bg-gray-200"
+                >
+                  <input type="checkbox" name="" id="" class="cursor-pointer" />
+                </div>
+                <!-- star -->
+                <div
+                  class="p-1 h-8 flex justify-center items-center w-8 rounded-full cursor-pointer hover:bg-gray-200"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    class="w-4 h-4"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"
+                    />
+                  </svg>
+                </div>
+
+                <div class="flex relative">
+                  <p class="mr-24 font-medium">PW Skills</p>
+                  <p>
+                    <span class="font-medium"
+                      >Daily Doubt Sessions Starting Today! -</span
+                    >
+                    <span class="text-gray-500"
+                      >Dear Students,We are excited to announce the commencement
+                      of our daily doub...</span
+                    >
+                    <span class="ml-4 font-medium">2:50 PM</span>
+                  </p>
+                  <!-- for hidden svg and will be visible on hover -->
+                  <div
+                    class="flex items-center gap-6 transition-hover duration-200 ease-in-out hidden absolute -right-2 -top-2 h-10 z-10 group-hover:flex group-hover:bg-[#EAF1FB]"
+                  >
+                    <!-- archive -->
+                    <div class="hover:bg-gray-200 p-2 rounded-full">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        class="w-[1.2rem] h-[1.2rem]"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M9 3.75H6.912a2.25 2.25 0 00-2.15 1.588L2.35 13.177a2.25 2.25 0 00-.1.661V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18v-4.162c0-.224-.034-.447-.1-.661L19.24 5.338a2.25 2.25 0 00-2.15-1.588H15M2.25 13.5h3.86a2.25 2.25 0 012.012 1.244l.256.512a2.25 2.25 0 002.013 1.244h3.218a2.25 2.25 0 002.013-1.244l.256-.512a2.25 2.25 0 012.013-1.244h3.859M12 3v8.25m0 0l-3-3m3 3l3-3"
+                        />
+                      </svg>
+                    </div>
+                    <!-- delete -->
+                    <div class="hover:bg-gray-200 p-2 rounded-full">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        class="w-[1.2rem] h-[1.2rem]"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
+                        />
+                      </svg>
+                    </div>
+                    <!-- mark as unread -->
+                    <div class="hover:bg-gray-200 p-2 rounded-full">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        class="w-[1.2rem] h-[1.2rem]"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
+                        />
+                      </svg>
+                    </div>
+                    <!-- snooze -->
+                    <div class="hover:bg-gray-200 p-2 rounded-full">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        class="w-[1.2rem] h-[1.2rem]"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <!-- single mail content -->
+              <div
+                class="flex flex-row h-10 relative items-center gap-3 cursor-pointer transition-hover duration-100 ease-in-out hover:shadow-md hover:shadow-gray-300 group"
+              >
+                <!-- checkbox -->
+                <div
+                  class="ml-3 p-1 h-8 flex justify-center items-center w-8 rounded-full cursor-pointer hover:bg-gray-200"
+                >
+                  <input type="checkbox" name="" id="" class="cursor-pointer" />
+                </div>
+                <!-- star -->
+                <div
+                  class="p-1 h-8 flex justify-center items-center w-8 rounded-full cursor-pointer hover:bg-gray-200"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    class="w-4 h-4"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"
+                    />
+                  </svg>
+                </div>
+
+                <div class="flex relative">
+                  <p class="mr-24 font-medium">PW Skills</p>
+                  <p>
+                    <span class="font-medium"
+                      >Daily Doubt Sessions Starting Today! -</span
+                    >
+                    <span class="text-gray-500"
+                      >Dear Students,We are excited to announce the commencement
+                      of our daily doub...</span
+                    >
+                    <span class="ml-4 font-medium">2:50 PM</span>
+                  </p>
+                  <!-- for hidden svg and will be visible on hover -->
+                  <div
+                    class="flex items-center gap-6 transition-hover duration-200 ease-in-out hidden absolute -right-2 -top-2 h-10 z-10 group-hover:flex group-hover:bg-[#EAF1FB]"
+                  >
+                    <!-- archive -->
+                    <div class="hover:bg-gray-200 p-2 rounded-full">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        class="w-[1.2rem] h-[1.2rem]"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M9 3.75H6.912a2.25 2.25 0 00-2.15 1.588L2.35 13.177a2.25 2.25 0 00-.1.661V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18v-4.162c0-.224-.034-.447-.1-.661L19.24 5.338a2.25 2.25 0 00-2.15-1.588H15M2.25 13.5h3.86a2.25 2.25 0 012.012 1.244l.256.512a2.25 2.25 0 002.013 1.244h3.218a2.25 2.25 0 002.013-1.244l.256-.512a2.25 2.25 0 012.013-1.244h3.859M12 3v8.25m0 0l-3-3m3 3l3-3"
+                        />
+                      </svg>
+                    </div>
+                    <!-- delete -->
+                    <div class="hover:bg-gray-200 p-2 rounded-full">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        class="w-[1.2rem] h-[1.2rem]"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
+                        />
+                      </svg>
+                    </div>
+                    <!-- mark as unread -->
+                    <div class="hover:bg-gray-200 p-2 rounded-full">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        class="w-[1.2rem] h-[1.2rem]"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
+                        />
+                      </svg>
+                    </div>
+                    <!-- snooze -->
+                    <div class="hover:bg-gray-200 p-2 rounded-full">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        class="w-[1.2rem] h-[1.2rem]"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <!-- single mail content -->
+              <div
+                class="flex flex-row h-10 relative items-center gap-3 cursor-pointer transition-hover duration-100 ease-in-out hover:shadow-md hover:shadow-gray-300 group"
+              >
+                <!-- checkbox -->
+                <div
+                  class="ml-3 p-1 h-8 flex justify-center items-center w-8 rounded-full cursor-pointer hover:bg-gray-200"
+                >
+                  <input type="checkbox" name="" id="" class="cursor-pointer" />
+                </div>
+                <!-- star -->
+                <div
+                  class="p-1 h-8 flex justify-center items-center w-8 rounded-full cursor-pointer hover:bg-gray-200"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    class="w-4 h-4"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"
+                    />
+                  </svg>
+                </div>
+
+                <div class="flex relative">
+                  <p class="mr-24 font-medium">PW Skills</p>
+                  <p>
+                    <span class="font-medium"
+                      >Daily Doubt Sessions Starting Today! -</span
+                    >
+                    <span class="text-gray-500"
+                      >Dear Students,We are excited to announce the commencement
+                      of our daily doub...</span
+                    >
+                    <span class="ml-4 font-medium">2:50 PM</span>
+                  </p>
+                  <!-- for hidden svg and will be visible on hover -->
+                  <div
+                    class="flex items-center gap-6 transition-hover duration-200 ease-in-out hidden absolute -right-2 -top-2 h-10 z-10 group-hover:flex group-hover:bg-[#EAF1FB]"
+                  >
+                    <!-- archive -->
+                    <div class="hover:bg-gray-200 p-2 rounded-full">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        class="w-[1.2rem] h-[1.2rem]"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M9 3.75H6.912a2.25 2.25 0 00-2.15 1.588L2.35 13.177a2.25 2.25 0 00-.1.661V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18v-4.162c0-.224-.034-.447-.1-.661L19.24 5.338a2.25 2.25 0 00-2.15-1.588H15M2.25 13.5h3.86a2.25 2.25 0 012.012 1.244l.256.512a2.25 2.25 0 002.013 1.244h3.218a2.25 2.25 0 002.013-1.244l.256-.512a2.25 2.25 0 012.013-1.244h3.859M12 3v8.25m0 0l-3-3m3 3l3-3"
+                        />
+                      </svg>
+                    </div>
+                    <!-- delete -->
+                    <div class="hover:bg-gray-200 p-2 rounded-full">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        class="w-[1.2rem] h-[1.2rem]"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
+                        />
+                      </svg>
+                    </div>
+                    <!-- mark as unread -->
+                    <div class="hover:bg-gray-200 p-2 rounded-full">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        class="w-[1.2rem] h-[1.2rem]"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
+                        />
+                      </svg>
+                    </div>
+                    <!-- snooze -->
+                    <div class="hover:bg-gray-200 p-2 rounded-full">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        class="w-[1.2rem] h-[1.2rem]"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <!-- single mail content -->
+              <div
+                class="flex flex-row h-10 relative items-center gap-3 cursor-pointer transition-hover duration-100 ease-in-out hover:shadow-md hover:shadow-gray-300 group"
+              >
+                <!-- checkbox -->
+                <div
+                  class="ml-3 p-1 h-8 flex justify-center items-center w-8 rounded-full cursor-pointer hover:bg-gray-200"
+                >
+                  <input type="checkbox" name="" id="" class="cursor-pointer" />
+                </div>
+                <!-- star -->
+                <div
+                  class="p-1 h-8 flex justify-center items-center w-8 rounded-full cursor-pointer hover:bg-gray-200"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    class="w-4 h-4"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"
+                    />
+                  </svg>
+                </div>
+
+                <div class="flex relative">
+                  <p class="mr-24 font-medium">PW Skills</p>
+                  <p>
+                    <span class="font-medium"
+                      >Daily Doubt Sessions Starting Today! -</span
+                    >
+                    <span class="text-gray-500"
+                      >Dear Students,We are excited to announce the commencement
+                      of our daily doub...</span
+                    >
+                    <span class="ml-4 font-medium">2:50 PM</span>
+                  </p>
+                  <!-- for hidden svg and will be visible on hover -->
+                  <div
+                    class="flex items-center gap-6 transition-hover duration-200 ease-in-out hidden absolute -right-2 -top-2 h-10 z-10 group-hover:flex group-hover:bg-[#EAF1FB]"
+                  >
+                    <!-- archive -->
+                    <div class="hover:bg-gray-200 p-2 rounded-full">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        class="w-[1.2rem] h-[1.2rem]"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M9 3.75H6.912a2.25 2.25 0 00-2.15 1.588L2.35 13.177a2.25 2.25 0 00-.1.661V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18v-4.162c0-.224-.034-.447-.1-.661L19.24 5.338a2.25 2.25 0 00-2.15-1.588H15M2.25 13.5h3.86a2.25 2.25 0 012.012 1.244l.256.512a2.25 2.25 0 002.013 1.244h3.218a2.25 2.25 0 002.013-1.244l.256-.512a2.25 2.25 0 012.013-1.244h3.859M12 3v8.25m0 0l-3-3m3 3l3-3"
+                        />
+                      </svg>
+                    </div>
+                    <!-- delete -->
+                    <div class="hover:bg-gray-200 p-2 rounded-full">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        class="w-[1.2rem] h-[1.2rem]"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
+                        />
+                      </svg>
+                    </div>
+                    <!-- mark as unread -->
+                    <div class="hover:bg-gray-200 p-2 rounded-full">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        class="w-[1.2rem] h-[1.2rem]"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
+                        />
+                      </svg>
+                    </div>
+                    <!-- snooze -->
+                    <div class="hover:bg-gray-200 p-2 rounded-full">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        class="w-[1.2rem] h-[1.2rem]"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <!-- single mail content -->
+              <div
+                class="flex flex-row h-10 relative items-center gap-3 cursor-pointer transition-hover duration-100 ease-in-out hover:shadow-md hover:shadow-gray-300 group"
+              >
+                <!-- checkbox -->
+                <div
+                  class="ml-3 p-1 h-8 flex justify-center items-center w-8 rounded-full cursor-pointer hover:bg-gray-200"
+                >
+                  <input type="checkbox" name="" id="" class="cursor-pointer" />
+                </div>
+                <!-- star -->
+                <div
+                  class="p-1 h-8 flex justify-center items-center w-8 rounded-full cursor-pointer hover:bg-gray-200"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    class="w-4 h-4"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"
+                    />
+                  </svg>
+                </div>
+
+                <div class="flex relative">
+                  <p class="mr-24 font-medium">PW Skills</p>
+                  <p>
+                    <span class="font-medium"
+                      >Daily Doubt Sessions Starting Today! -</span
+                    >
+                    <span class="text-gray-500"
+                      >Dear Students,We are excited to announce the commencement
+                      of our daily doub...</span
+                    >
+                    <span class="ml-4 font-medium">2:50 PM</span>
+                  </p>
+                  <!-- for hidden svg and will be visible on hover -->
+                  <div
+                    class="flex items-center gap-6 transition-hover duration-200 ease-in-out hidden absolute -right-2 -top-2 h-10 z-10 group-hover:flex group-hover:bg-[#EAF1FB]"
+                  >
+                    <!-- archive -->
+                    <div class="hover:bg-gray-200 p-2 rounded-full">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        class="w-[1.2rem] h-[1.2rem]"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M9 3.75H6.912a2.25 2.25 0 00-2.15 1.588L2.35 13.177a2.25 2.25 0 00-.1.661V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18v-4.162c0-.224-.034-.447-.1-.661L19.24 5.338a2.25 2.25 0 00-2.15-1.588H15M2.25 13.5h3.86a2.25 2.25 0 012.012 1.244l.256.512a2.25 2.25 0 002.013 1.244h3.218a2.25 2.25 0 002.013-1.244l.256-.512a2.25 2.25 0 012.013-1.244h3.859M12 3v8.25m0 0l-3-3m3 3l3-3"
+                        />
+                      </svg>
+                    </div>
+                    <!-- delete -->
+                    <div class="hover:bg-gray-200 p-2 rounded-full">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        class="w-[1.2rem] h-[1.2rem]"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
+                        />
+                      </svg>
+                    </div>
+                    <!-- mark as unread -->
+                    <div class="hover:bg-gray-200 p-2 rounded-full">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        class="w-[1.2rem] h-[1.2rem]"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
+                        />
+                      </svg>
+                    </div>
+                    <!-- snooze -->
+                    <div class="hover:bg-gray-200 p-2 rounded-full">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        class="w-[1.2rem] h-[1.2rem]"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <!-- single mail content -->
+              <div
+                class="flex flex-row h-10 relative items-center gap-3 cursor-pointer transition-hover duration-100 ease-in-out hover:shadow-md hover:shadow-gray-300 group"
+              >
+                <!-- checkbox -->
+                <div
+                  class="ml-3 p-1 h-8 flex justify-center items-center w-8 rounded-full cursor-pointer hover:bg-gray-200"
+                >
+                  <input type="checkbox" name="" id="" class="cursor-pointer" />
+                </div>
+                <!-- star -->
+                <div
+                  class="p-1 h-8 flex justify-center items-center w-8 rounded-full cursor-pointer hover:bg-gray-200"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    class="w-4 h-4"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"
+                    />
+                  </svg>
+                </div>
+
+                <div class="flex relative">
+                  <p class="mr-24 font-medium">PW Skills</p>
+                  <p>
+                    <span class="font-medium"
+                      >Daily Doubt Sessions Starting Today! -</span
+                    >
+                    <span class="text-gray-500"
+                      >Dear Students,We are excited to announce the commencement
+                      of our daily doub...</span
+                    >
+                    <span class="ml-4 font-medium">2:50 PM</span>
+                  </p>
+                  <!-- for hidden svg and will be visible on hover -->
+                  <div
+                    class="flex items-center gap-6 transition-hover duration-200 ease-in-out hidden absolute -right-2 -top-2 h-10 z-10 group-hover:flex group-hover:bg-[#EAF1FB]"
+                  >
+                    <!-- archive -->
+                    <div class="hover:bg-gray-200 p-2 rounded-full">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        class="w-[1.2rem] h-[1.2rem]"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M9 3.75H6.912a2.25 2.25 0 00-2.15 1.588L2.35 13.177a2.25 2.25 0 00-.1.661V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18v-4.162c0-.224-.034-.447-.1-.661L19.24 5.338a2.25 2.25 0 00-2.15-1.588H15M2.25 13.5h3.86a2.25 2.25 0 012.012 1.244l.256.512a2.25 2.25 0 002.013 1.244h3.218a2.25 2.25 0 002.013-1.244l.256-.512a2.25 2.25 0 012.013-1.244h3.859M12 3v8.25m0 0l-3-3m3 3l3-3"
+                        />
+                      </svg>
+                    </div>
+                    <!-- delete -->
+                    <div class="hover:bg-gray-200 p-2 rounded-full">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        class="w-[1.2rem] h-[1.2rem]"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
+                        />
+                      </svg>
+                    </div>
+                    <!-- mark as unread -->
+                    <div class="hover:bg-gray-200 p-2 rounded-full">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        class="w-[1.2rem] h-[1.2rem]"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
+                        />
+                      </svg>
+                    </div>
+                    <!-- snooze -->
+                    <div class="hover:bg-gray-200 p-2 rounded-full">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        class="w-[1.2rem] h-[1.2rem]"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <!-- single mail content -->
+              <div
+                class="flex flex-row h-10 relative items-center gap-3 cursor-pointer transition-hover duration-100 ease-in-out hover:shadow-md hover:shadow-gray-300 group"
+              >
+                <!-- checkbox -->
+                <div
+                  class="ml-3 p-1 h-8 flex justify-center items-center w-8 rounded-full cursor-pointer hover:bg-gray-200"
+                >
+                  <input type="checkbox" name="" id="" class="cursor-pointer" />
+                </div>
+                <!-- star -->
+                <div
+                  class="p-1 h-8 flex justify-center items-center w-8 rounded-full cursor-pointer hover:bg-gray-200"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    class="w-4 h-4"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"
+                    />
+                  </svg>
+                </div>
+
+                <div class="flex relative">
+                  <p class="mr-24 font-medium">PW Skills</p>
+                  <p>
+                    <span class="font-medium"
+                      >Daily Doubt Sessions Starting Today! -</span
+                    >
+                    <span class="text-gray-500"
+                      >Dear Students,We are excited to announce the commencement
+                      of our daily doub...</span
+                    >
+                    <span class="ml-4 font-medium">2:50 PM</span>
+                  </p>
+                  <!-- for hidden svg and will be visible on hover -->
+                  <div
+                    class="flex items-center gap-6 transition-hover duration-200 ease-in-out hidden absolute -right-2 -top-2 h-10 z-10 group-hover:flex group-hover:bg-[#EAF1FB]"
+                  >
+                    <!-- archive -->
+                    <div class="hover:bg-gray-200 p-2 rounded-full">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        class="w-[1.2rem] h-[1.2rem]"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M9 3.75H6.912a2.25 2.25 0 00-2.15 1.588L2.35 13.177a2.25 2.25 0 00-.1.661V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18v-4.162c0-.224-.034-.447-.1-.661L19.24 5.338a2.25 2.25 0 00-2.15-1.588H15M2.25 13.5h3.86a2.25 2.25 0 012.012 1.244l.256.512a2.25 2.25 0 002.013 1.244h3.218a2.25 2.25 0 002.013-1.244l.256-.512a2.25 2.25 0 012.013-1.244h3.859M12 3v8.25m0 0l-3-3m3 3l3-3"
+                        />
+                      </svg>
+                    </div>
+                    <!-- delete -->
+                    <div class="hover:bg-gray-200 p-2 rounded-full">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        class="w-[1.2rem] h-[1.2rem]"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
+                        />
+                      </svg>
+                    </div>
+                    <!-- mark as unread -->
+                    <div class="hover:bg-gray-200 p-2 rounded-full">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        class="w-[1.2rem] h-[1.2rem]"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
+                        />
+                      </svg>
+                    </div>
+                    <!-- snooze -->
+                    <div class="hover:bg-gray-200 p-2 rounded-full">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        class="w-[1.2rem] h-[1.2rem]"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
